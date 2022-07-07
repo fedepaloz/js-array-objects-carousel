@@ -12,79 +12,65 @@ Aggiungere il ciclo infinito del carosello. Ovvero se la miniatura attiva è la 
 
 const images = [
     {
-      url: 'http://www.viaggiareonline.it/wp-content/uploads/2014/11/sweden_148857365.jpg',
-      title: 'Svezia',
-      description:
-        'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Et temporibus voluptatum suscipit tempore aliquid deleniti aut veniam.',
+        url: 'http://www.viaggiareonline.it/wp-content/uploads/2014/11/sweden_148857365.jpg',
+        title: 'Svezia',
+        description:
+            'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Et temporibus voluptatum suscipit tempore aliquid deleniti aut veniam.',
     },
-  
-    {
-      url: 'https://static1.evcdn.net/images/reduction/1513757_w-1920_h-1080_q-70_m-crop.jpg',
-      title: 'Perù',
-      description:
-        'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Et temporibus voluptatum suscipit tempore aliquid deleniti aut veniam.',
-    },
-  
-    {
-      url: 'https://img.itinari.com/pages/images/original/0d3ed180-d22d-48e8-84df-19c4d888b41f-62-crop.jpg?ch=DPR&dpr=2.625&w=1600&s=7ebd4b5a9e045f41b4e0c7c75d298d6c',
-      title: 'Chile',
-      description:
-        'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Et temporibus voluptatum suscipit tempore aliquid deleniti aut veniam.',
-    },
-    {
-      url: 'https://static1.evcdn.net/images/reduction/1583177_w-1920_h-1080_q-70_m-crop.jpg',
-      title: 'Argentina',
-      description:
-        'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Et temporibus voluptatum suscipit tempore aliquid deleniti aut veniam.',
-    },
-    {
-      url: 'https://cdn.sanity.io/images/24oxpx4s/prod/ed09eff0362396772ad50ec3bfb728d332eb1c30-3200x2125.jpg?w=1600&h=1063&fit=crop',
-      title: 'Colombia',
-      description:
-        'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Et temporibus voluptatum suscipit tempore aliquid deleniti aut veniam.',
-    },
-  ];
 
-  const sources = ["img/1.jpg","img/2.jpg","img/3.jpg","img/4.jpg","img/5.jpg"]
+    {
+        url: 'https://static1.evcdn.net/images/reduction/1513757_w-1920_h-1080_q-70_m-crop.jpg',
+        title: 'Perù',
+        description:
+            'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Et temporibus voluptatum suscipit tempore aliquid deleniti aut veniam.',
+    },
 
+    {
+        url: 'https://img.itinari.com/pages/images/original/0d3ed180-d22d-48e8-84df-19c4d888b41f-62-crop.jpg?ch=DPR&dpr=2.625&w=1600&s=7ebd4b5a9e045f41b4e0c7c75d298d6c',
+        title: 'Chile',
+        description:
+            'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Et temporibus voluptatum suscipit tempore aliquid deleniti aut veniam.',
+    },
+    {
+        url: 'https://static1.evcdn.net/images/reduction/1583177_w-1920_h-1080_q-70_m-crop.jpg',
+        title: 'Argentina',
+        description:
+            'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Et temporibus voluptatum suscipit tempore aliquid deleniti aut veniam.',
+    },
+    {
+        url: 'https://cdn.sanity.io/images/24oxpx4s/prod/ed09eff0362396772ad50ec3bfb728d332eb1c30-3200x2125.jpg?w=1600&h=1063&fit=crop',
+        title: 'Colombia',
+        description:
+            'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Et temporibus voluptatum suscipit tempore aliquid deleniti aut veniam.',
+    },
+];
 
-  //prendere tutte le immagini dal dom
-  const image = document.querySelectorAll('#carousel img');
-  
-  
-  /* modo per poter poi scegliere di prendere a piacimento l immagine che io decido, creo una variabile let che sta ad indicare che quello è l'elemento con classe active */
-  
-  let currentActiveIndex = 0
-  
-  /* array di images con dentro la variabile let definita sopra mi permette di scegliere che all apertura della pagina l immagine che dovra comparire deve essere quella attiva. (si legge aggiungo la classe active all elemento designato dalla variabile let che ho definito sopra)  */
-  
-  image[currentActiveIndex].classList.add('active')
-  
-  
-  //prendo le frecce dal dom
-  
-  const leftButton = document.getElementById("left-arrow")
-  const rightButton = document.getElementById("right-arrow")
-  
-  /* gestisco la funzione relativa al bottone, quando lo premo incremento l'indice della variabile currentActiveIndex di uno e poi gli riassegno la classe active facendo si che si applichi all' immagine dell'indice selezionata */
-  
-  rightButton.addEventListener('click', function () {
-      image[currentActiveIndex].classList.remove('active');
-      currentActiveIndex++;
-      if (currentActiveIndex === image.length) {
-          currentActiveIndex = 0;
-      }
-      image[currentActiveIndex].classList.add('active');
-  })
-  
-  
-  
-  leftButton.addEventListener('click', function () {
-      image[currentActiveIndex].classList.remove('active');
-      currentActiveIndex--;
-      if (currentActiveIndex === 0) {
-          currentActiveIndex = 3
-          
-      }
-      image[currentActiveIndex].classList.add('active');
-  })
+console.log(images)
+
+const carousel = document.getElementById('carousel')
+
+let cards = ''
+
+for (let i = 0; i < images.length; i++) {
+
+    const carouselCard = images[i]
+    cards +=
+
+        ` <div id="carousel">
+            <i class="fa-solid fa-arrow-left fa-2xl" id="left-arrow"></i>
+            <div class="slide-cards">
+                <div id="label">
+                    <h1>
+                        "${carouselCard.title}"
+                    </h1>
+                    <h2>"${carouselCard.description}"</h2>
+                </div>
+                <img src="${carouselCard.url}" alt="">
+
+            </div>
+            <i class="fa-solid fa-arrow-right fa-2xl" id="right-arrow"></i>
+        </div> `
+
+}
+
+carousel.innerHTML = cards

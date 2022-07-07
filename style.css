@@ -18,7 +18,7 @@ img {
     height: 100%;
     object-fit: contain;
     border-radius: 20px;
-    display: none;
+    
 }
 
 #carousel .slide-cards .active {
@@ -48,3 +48,8 @@ img {
 #right-arrow:hover{transform: scale(1.2); color: red;}
 #left-arrow:hover{transform: scale(1.2);color: red;}
 
+#label{
+    color: white;
+    position: absolute;
+    transform: translateY(20px);
+}

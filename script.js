@@ -44,3 +44,47 @@ const images = [
         'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Et temporibus voluptatum suscipit tempore aliquid deleniti aut veniam.',
     },
   ];
+
+  const sources = ["img/1.jpg","img/2.jpg","img/3.jpg","img/4.jpg","img/5.jpg"]
+
+
+  //prendere tutte le immagini dal dom
+  const image = document.querySelectorAll('#carousel img');
+  
+  
+  /* modo per poter poi scegliere di prendere a piacimento l immagine che io decido, creo una variabile let che sta ad indicare che quello è l'elemento con classe active */
+  
+  let currentActiveIndex = 0
+  
+  /* array di images con dentro la variabile let definita sopra mi permette di scegliere che all apertura della pagina l immagine che dovra comparire deve essere quella attiva. (si legge aggiungo la classe active all elemento designato dalla variabile let che ho definito sopra)  */
+  
+  image[currentActiveIndex].classList.add('active')
+  
+  
+  //prendo le frecce dal dom
+  
+  const leftButton = document.getElementById("left-arrow")
+  const rightButton = document.getElementById("right-arrow")
+  
+  /* gestisco la funzione relativa al bottone, quando lo premo incremento l'indice della variabile currentActiveIndex di uno e poi gli riassegno la classe active facendo si che si applichi all' immagine dell'indice selezionata */
+  
+  rightButton.addEventListener('click', function () {
+      image[currentActiveIndex].classList.remove('active');
+      currentActiveIndex++;
+      if (currentActiveIndex === image.length) {
+          currentActiveIndex = 0;
+      }
+      image[currentActiveIndex].classList.add('active');
+  })
+  
+  
+  
+  leftButton.addEventListener('click', function () {
+      image[currentActiveIndex].classList.remove('active');
+      currentActiveIndex--;
+      if (currentActiveIndex === 0) {
+          currentActiveIndex = 3
+          
+      }
+      image[currentActiveIndex].classList.add('active');
+  })
